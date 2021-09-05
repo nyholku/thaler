@@ -7,15 +7,6 @@ import static thaler.Console.*;
 
 public class List<T> extends Struct<T> implements Iterable<T> {
 	private LinkedList<T> m_List = new LinkedList<T>();
-
-	public static List fun() {
-		return new List();
-	}
-
-	public static List fun(String s) {
-		return new List();
-	}
-
 	public static List List$() {
 		return new List();
 	}

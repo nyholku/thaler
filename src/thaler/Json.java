@@ -23,6 +23,10 @@ public class Json {
 		new JsonParser().parse(text, list);
 	}
 
+	public static String format(Dict dict) {
+		return null;
+	}
+
 	private static class JsonParser {
 		int m_Index;
 		String m_Text;

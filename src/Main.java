@@ -5,6 +5,7 @@ import static thaler.List.*;
 import static thaler.Dict.*;
 import static thaler.Math.*;
 import static thaler.Slice.*;
+import static thaler.$.*;
 
 //import thaler.List;
 
@@ -18,22 +19,27 @@ import static thaler.Slice.*;
 // dictionary creation from objects, a string
 // string as list of chars
 // parse() => list or dict or sequence
+
+// Ideas:
+// Dict == NamedTuple ??
+// USage of $: list creation $()
+
 public class Main {
 	{
 		printf("Hello world!\n");
 		if (true) {
-		var list2 = List$("[ 'a' , 'b', 'c' ]");
-		var list3 = asList("abcdefghi");
-		println(asString(list3));
-		println(list3);
-		del(list3, Slice$(1, null, 2));
-		println(list3);
+			var list2 = List$("[ 'a' , 'b', 'c' ]");
+			var list3 = asList("abcdefghi");
+			println(asString(list3));
+			println(list3);
+			del(list3, Slice$(1, null, 2));
+			println(list3);
 
-		println(List$("[4,5,6]"));
-		println(Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}"));
+			println(List$("[4,5,6]"));
+			println(Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}"));
 
-		//		for (var i : Slice$(100, 0, 100, 1))
-		//			println(i);
+			//		for (var i : Slice$(100, 0, 100, 1))
+			//			println(i);
 		}
 		var list = List$("a", "b", "c", "d", "e");
 		for (var i : list.slice(-1, null, -1))
@@ -50,8 +56,7 @@ public class Main {
 		println(d);
 		var d2 = Dict$("p", 1, "q", 3.2, "r", List$("XML", "JPG"));
 		println(d2);
-		
-		
+
 		var x = sqrt(double$(input("Enter number")));
 		println("You entered %f\n", x * x);
 
