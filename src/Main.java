@@ -2,9 +2,14 @@
 import static apackage.Klass.*;
 import static thaler.Console.*;
 import static thaler.List.*;
+
+import thaler.*;
 import static thaler.Dict.*;
 import static thaler.Math.*;
+import static thaler.Range.*;
 import static thaler.Slice.*;
+import static thaler.Generator.*;
+
 import static thaler.$.*;
 
 //import thaler.List;
@@ -25,8 +30,36 @@ import static thaler.$.*;
 // USage of $: list creation $()
 
 public class Main {
+
 	{
 		printf("Hello world!\n");
+		var g = Generator$(0, ($) -> {
+			$.yield(666);
+			$.yield(777);
+			$.yield(999);
+		});
+
+		try (var $ = $(g)) {
+			for (var i : $) {
+				println(i + 2);
+				break;
+			}
+
+		}
+
+		printf("Exit\n");
+		System.exit(0);
+
+		try (var $ = $(List$(Range$(10)))) {
+			for (var i : $) {
+				println(i + 2);
+			}
+
+		}
+
+		for (var r : List$(Range$(10)))
+			println(r + 2);
+		System.exit(0);
 		if (true) {
 			var list2 = List$("[ 'a' , 'b', 'c' ]");
 			var list3 = asList("abcdefghi");

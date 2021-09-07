@@ -7,6 +7,7 @@ import static thaler.Console.*;
 
 public class List<T> extends Struct<T> implements Iterable<T> {
 	private LinkedList<T> m_List = new LinkedList<T>();
+
 	public static List List$() {
 		return new List();
 	}
@@ -19,6 +20,15 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		return new List(args);
 	}
 
+
+	public static List<Integer> List$(Iterable<Integer> itrble) {
+		return new List(itrble);
+	}
+
+	public static <T> List List$(T x, Iterable<T> itrble) {
+		return new List(itrble);
+	}
+
 	//---
 
 	public List(String str) {
@@ -27,6 +37,11 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 
 	public List(Object... args) {
 		for (Object obj : args)
+			append((T) obj);
+	}
+
+	public List(Iterable<T> itrble) {
+		for (Object obj : itrble)
 			append((T) obj);
 	}
 
