@@ -1,5 +1,5 @@
 # thaler
-Tongue in cheek project to see how far Java syntax can be pushed
+Thaler is a tongue in cheek project to see how far Java syntax can be pushed
 
 Thaler was named after the mighty dollar sign which I think gets
 used to all too little in Java world ;)
