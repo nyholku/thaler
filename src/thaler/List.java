@@ -16,10 +16,9 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		return new List(str);
 	}
 
-	public static List List$(Object... args) {
-		return new List(args);
+	public static <T> List<T> List$(T... args) {
+		return new List<T>(args);
 	}
-
 
 	public static List<Integer> List$(Iterable<Integer> itrble) {
 		return new List(itrble);
@@ -135,16 +134,12 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		return m_List.iterator();
 	}
 
-	public IterableSlice slice(int start) {
-		return slice(start, null, null);
-	}
 
-	public IterableSlice slice(int start, int stop) {
-		return slice(start, stop, null);
-	}
-
-	public IterableSlice slice(Integer start, Integer stop, Integer step) {
-		return new IterableSlice(this.length(), start, stop, step);
+	public List slice(Slice slice) {
+		List list = List$();
+		for (var i : new IterableSlice(m_List.size(), slice))
+			list.append(m_List.get(i));
+		return list;
 	}
 
 	public static List<String> asList(String str) {

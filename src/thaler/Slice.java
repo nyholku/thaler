@@ -16,6 +16,11 @@ public class Slice {
 	static public class IterableSlice extends Slice implements Iterable<Integer> {
 		int m_Size;
 
+		IterableSlice(int size, Slice slice) {
+			super(slice.m_Start, slice.m_Stop, slice.m_Stop);
+			m_Size = size;
+		}
+
 		IterableSlice(int size, Integer start, Integer stop, Integer step) {
 			super(start, stop, step);
 			m_Size = size;
@@ -73,6 +78,14 @@ public class Slice {
 			m_N--;
 			return t;
 		}
+	}
+
+	static public Slice Slice$(Integer start) {
+		return new Slice(start, null, null);
+	}
+
+	static public Slice Slice$(Integer start, Integer stop) {
+		return new Slice(start, stop, null);
 	}
 
 	static public Slice Slice$(Integer start, Integer stop, Integer step) {

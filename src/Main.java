@@ -30,22 +30,54 @@ import static thaler.$.*;
 // USage of $: list creation $()
 
 public class Main {
-
+	// No static void main(String...args) necessary ;) 
 	{
 		printf("Hello world!\n");
+
+		// Python like range
+		for (var i : Range$(3)) {
+			println(i + 100);
+		}
+
+		// Python like list
+		for (var i : List$(1, 2, 3)) {
+			println(i + 200);
+		}
+
+		// Python like list initialized from range
+		for (var i : List$(Range$(1, 2, 3))) {
+			println(i + 300);
+		}
+
+		// Python style slice
+		var l = asList("ABCDEF");
+		println(l);
+		for (var i : l.slice(Slice$(3)))
+			println(i);
+
+		// Three last elements of list as a slice and then turned into Java String
+		println(asString(l.slice(Slice$(-3))));
+
+		// Python style generator / co-routine 
 		var g = Generator$(0, ($) -> {
-			$.yield(666);
-			$.yield(777);
-			$.yield(999);
+			int i = 0;
+			while (true)
+				$.yield(i++);
 		});
 
-		try (var $ = $(g)) {
-			for (var i : $) {
-				println(i + 2);
+		for (var i : g) {
+			println(i + 500);
+			if (i > 4)
 				break;
-			}
-
 		}
+
+		// Python style dictionary initialised with JSON string, note no quoting of quotes as usually needed in Java
+		Dict d = Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}");
+		// Output as JSON
+		println(d);
+
+		println(d.get("array"));
+		println(d.get("subobj"));
 
 		printf("Exit\n");
 		System.exit(0);
@@ -54,7 +86,6 @@ public class Main {
 			for (var i : $) {
 				println(i + 2);
 			}
-
 		}
 
 		for (var r : List$(Range$(10)))
@@ -75,20 +106,16 @@ public class Main {
 			//			println(i);
 		}
 		var list = List$("a", "b", "c", "d", "e");
-		for (var i : list.slice(-1, null, -1))
-			println(i);
-		for (var i : list.slice(0, null, 1))
-			println(i);
 		var y = Klass$();
 		print(y);
-		var l = List$(1, "abc", 3.7);
-		println(l);
+		var l2 = List$(1, "abc", 3.7);
+		println(l2);
 		if (equal(1, 1))
 			println("equal!");
-		var d = Dict$("p", 1, "q", 3.2, "r", "huuhaa");
-		println(d);
-		var d2 = Dict$("p", 1, "q", 3.2, "r", List$("XML", "JPG"));
+		var d2 = Dict$("p", 1, "q", 3.2, "r", "huuhaa");
 		println(d2);
+		var d3 = Dict$("p", 1, "q", 3.2, "r", List$("XML", "JPG"));
+		println(d3);
 
 		var x = sqrt(double$(input("Enter number")));
 		println("You entered %f\n", x * x);
