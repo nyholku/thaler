@@ -42,22 +42,37 @@ we do not need to do casts here in order to use the specific class (Integer)
 methods.
 
 ```
-		// Python like range
-		for (var i : Range$(3)) {
-			println(i + 100);
-		}
+// Python like range
+for (var i : Range$(3)) {
+	println(i + 100);
+	}
 ```
 
 ```
-		// Python like list
-		for (var i : List$(1, 2, 3)) {
-			println(i + 200);
-		}
+// Python like list
+for (var i : List$(1, 2, 3)) {
+	println(i + 200);
+	}
 ```
 
 ```
-		// Python like list initialized from range
-		for (var i : List$(Range$(1, 2, 3))) {
-			println(i + 300);
-		}
+// Python like list initialized from range
+for (var i : List$(Range$(1, 2, 3))) {
+	println(i + 300);
+	}
+```
+
+String manipulation using slices is so cool in Python so Thaler attemps to offer that too
+
+```
+// Python style slice
+var l = asList("ABCDEF");
+println(l);
+for (var i : l.slice(Slice$(3)))
+	println(i);
+```
+
+```
+// Three last elements of list as a slice and then turned into Java String
+println(asString(l.slice(Slice$(-3))));
 ```
