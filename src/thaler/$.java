@@ -215,5 +215,15 @@ public class $ {
 		println(x);
 		return Double.parseDouble(x);
 	}
+	
+	//--
+	public static void main(String... args) {
+		try {
+			Loader.class.getClassLoader().loadClass("Main").getDeclaredConstructor().newInstance();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 
 }

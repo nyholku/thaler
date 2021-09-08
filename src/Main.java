@@ -42,6 +42,15 @@ public class Main {
 			if (i > 4)
 				break;
 		}
+		
+		try (var $=$(g)) {
+			for (var i:$) {
+				println(i + 600);
+				if (i > 4)
+					break;
+			
+			}
+		}
 
 		// Python style dictionary initialised with JSON string, note no quoting of quotes as usually needed in Java
 		Dict d = Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}");
