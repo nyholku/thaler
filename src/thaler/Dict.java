@@ -9,21 +9,6 @@ import java.util.Set;
 public class Dict<T> extends Struct<T> {
 	private LinkedHashMap<Object, T> m_Map = new LinkedHashMap<>();
 
-	public static Dict Dict$() {
-		return new Dict();
-	}
-
-	public static Dict Dict$(List list) {
-		return new Dict(list);
-	}
-
-	public static Dict Dict$(Object... args) {
-		return new Dict(args);
-	}
-
-	public static Dict Dict$(String str) {
-		return new Dict(str);
-	}
 
 	public Dict() {
 	}

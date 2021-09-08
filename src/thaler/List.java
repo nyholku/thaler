@@ -2,33 +2,12 @@ package thaler;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-import static thaler.Slice.*;
-import static thaler.Console.*;
+import static thaler.$.*;
+import thaler.$;
+import thaler.Slice.IterableSlice;
 
 public class List<T> extends Struct<T> implements Iterable<T> {
 	private LinkedList<T> m_List = new LinkedList<T>();
-
-	public static List List$() {
-		return new List();
-	}
-
-	public static List List$(String str) {
-		return new List(str);
-	}
-
-	public static <T> List<T> List$(T... args) {
-		return new List<T>(args);
-	}
-
-	public static List<Integer> List$(Iterable<Integer> itrble) {
-		return new List(itrble);
-	}
-
-	public static <T> List List$(T x, Iterable<T> itrble) {
-		return new List(itrble);
-	}
-
-	//---
 
 	public List(String str) {
 		Json.parse(str, this);
@@ -69,19 +48,6 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		m_List.remove(idx);
 	}
 
-	public static void del(List list, Slice slice) {
-		var l = List$();
-		var p = 0;
-		for (var i : slice.bind(list)) {
-			if (i > p)
-				l.inset(0, i);
-			else
-				l.append(i);
-			p = i;
-		}
-		for (var i : l)
-			list.del((int) i);
-	}
 
 	public T get(Object idx) {
 		return m_List.get(obj2idx(idx));
@@ -134,26 +100,11 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		return m_List.iterator();
 	}
 
-
 	public List slice(Slice slice) {
 		List list = List$();
 		for (var i : new IterableSlice(m_List.size(), slice))
 			list.append(m_List.get(i));
 		return list;
-	}
-
-	public static List<String> asList(String str) {
-		var list = List$();
-		for (int i = 0; i < str.length(); i++)
-			list.append("" + str.charAt(i));
-		return list;
-	}
-
-	public static String asString(List list) {
-		StringBuilder str = new StringBuilder();
-		for (Object obj : list)
-			str.append(obj);
-		return str.toString();
 	}
 
 }

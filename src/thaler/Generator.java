@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.concurrent.ArrayBlockingQueue;
 
-import static thaler.Console.*;
+import static thaler.$.*;
 
 public class Generator<T> implements Iterable<T>, AutoCloseable {
 	GenFun m_GenFun;
@@ -15,10 +15,6 @@ public class Generator<T> implements Iterable<T>, AutoCloseable {
 
 	public Generator(GenFun genFun) {
 		m_GenFun = genFun;
-	}
-
-	public static <T> Generator<T> Generator$(T x, GenFun genFun) {
-		return new Generator(genFun);
 	}
 
 	public ClosableIterator<T> iterator() {
@@ -56,11 +52,8 @@ public class Generator<T> implements Iterable<T>, AutoCloseable {
 
 	}
 
-	static public <Q> Wrap<Q> $(Iterable<Q> q) {
-		return new Wrap<Q>(q);
-	}
 
-	public static void main(String... args) {
+	public static void mainx(String... args) {
 		var g = Generator$(1, ($) -> {
 			$.yield(2);
 			$.yield(3);

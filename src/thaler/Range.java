@@ -7,19 +7,6 @@ public class Range implements Iterable<Integer> {
 	int m_Stop;
 	int m_Step;
 
-	public static Range Range$(int stop) {
-		return new Range(stop);
-
-	}
-
-	public static Range Range$(int start, int stop) {
-		return new Range(start, stop);
-
-	}
-
-	public static Range Range$(int start, int stop, int step) {
-		return new Range(start, stop, step);
-	}
 
 	public Range(int stop) {
 		this(0, stop, 1);

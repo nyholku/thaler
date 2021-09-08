@@ -80,17 +80,6 @@ public class Slice {
 		}
 	}
 
-	static public Slice Slice$(Integer start) {
-		return new Slice(start, null, null);
-	}
-
-	static public Slice Slice$(Integer start, Integer stop) {
-		return new Slice(start, stop, null);
-	}
-
-	static public Slice Slice$(Integer start, Integer stop, Integer step) {
-		return new Slice(start, stop, step);
-	}
 
 	public Slice(Integer start, Integer stop, Integer step) {
 		m_Start = start;

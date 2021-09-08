@@ -1,8 +1,6 @@
 package thaler;
 
-import static thaler.Console.*;
-import static thaler.Dict.*;
-import static thaler.List.*;
+import static thaler.$.*;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
