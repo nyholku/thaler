@@ -1,5 +1,5 @@
 # thaler
-Tongue in cheek plapen to see how far Java syntax can be pushed
+Tongue in cheek project to see how far Java syntax can be pushed
 
 Thaler was named after the mighty dollar sign which I think gets
 used to all too little in Java world ;)
@@ -76,3 +76,49 @@ for (var i : l.slice(Slice$(3)))
 // Three last elements of list as a slice and then turned into Java String
 println(asString(l.slice(Slice$(-3))));
 ```
+
+
+Generator are also so modern and in good taste so I wanted to offer them on the menu:
+
+```
+// Python style generator / co-routine 
+var g = Generator$(0, ($) -> {
+	int i = 0;
+	while (true)
+	$.yield(i++);
+	});
+
+for (var i : g) {
+	println(i + 500);
+	}
+```
+
+Above works but unfortunatel following leaks resourses:
+
+```
+for (var i : g) {
+	println(i + 500);
+	if (i>5)
+		break;
+	}
+
+```
+
+If you break out of the iterator loop you need to use the
+resource initialisation is acquistion pattern that builds
+on `AutoClosable`.
+
+```
+try (var $=$(g)) {
+	for (var i:$) {
+		println(i + 600);
+		if (i > 4)
+			break;
+			}
+		}
+```
+Here `$` is nothing but a local variable that catches the auto closable
+wrapper created by the `$()` function which wrapper implements Iterables
+and thus makes the for loop  and type inference work.
+
+
