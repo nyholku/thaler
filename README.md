@@ -1,5 +1,5 @@
 # thaler
-Thaler is a tongue in cheek project to see how far Java syntax can be pushed
+Thaler is a tongue in cheek project to see how far Java syntax can be pushed.
 
 Thaler was named after the mighty dollar sign which I think gets
 used to all too little in Java world ;)
@@ -10,7 +10,7 @@ To gain access to all the hippy and trendy stuff in Thaler all you need to do is
 import thaler.*;
 import static thaler.$.*;
 ```
-In thaler $ is pushed to go to places where no dollar sign has been before.
+In thaler $ is pushed to boldly go to places where no dollar sign has been before.
 
 The main usage for $ is to instantiate objects, but there are other uses:
 
