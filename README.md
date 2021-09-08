@@ -146,3 +146,7 @@ A `Dict` object of course works like an ordered dictionary where access to keys 
 I managed to resist pushing the use of $() for the `get()` methods which I thinks shows my moral character.
 
 That's all folks! For now...
+
+PS None of this is a joke, you can compile and run the code with the `run.sh` script.
+
+Having said that I repeat that this is just a bit of fun not to be taken seriously.
