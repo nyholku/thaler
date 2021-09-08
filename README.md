@@ -76,6 +76,13 @@ for (var i : l.slice(Slice$(3)))
 // Three last elements of list as a slice and then turned into Java String
 println(asString(l.slice(Slice$(-3))));
 ```
+We can also use slices to delete characters in a string:
+
+```
+var list3 = asList("abcdefghi");
+println(asString(del(list3, Slice$(1, null, 2))));
+```
+
 
 
 Generator are also so modern and in good taste so I wanted to offer them on the menu:
@@ -121,4 +128,21 @@ Here `$` is nothing but a local variable that catches the auto closable
 wrapper created by the `$()` function which wrapper implements Iterables
 and thus makes the for loop  and type inference work.
 
+Since everyone likes JSON I felt I could not leave that out
 
+```
+// Python style dictionary initialised with Java String in JSON format, note no quoting of quotes as usually needed in Java
+Dict d = Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}");
+// Output as JSON
+println(d);
+
+println(d.get("array"));
+println(d.get("subobj"));
+```
+As nobody wants to use a backslash to quote every double quote the JSON parser accepts single quote in addition to double quote
+which makes the JSON literas in your code so much more readable and is fully compatible with JSON spec.
+
+A `Dict` object of course works like an ordered dictionary where access to keys and values is provided by `put()` and `get()`.
+I managed to resist pushing the use of $() for the `get()` methods which I thinks shows my moral character.
+
+That's all folks! For now...
