@@ -158,6 +158,10 @@ I managed to resist pushing the use of $() for the `get()` methods which I think
 ## That's all (for now)
 That's all folks! For now...
 
-PS None of this is a joke, you can compile and run the code with the `run.sh` script.
+##PS 
+
+None of this is a joke, if you don't believe you can compile and run the code with the `run.sh` script.
+
+
 
 Having said that I repeat that this is just a bit of fun not to be taken seriously.
