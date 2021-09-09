@@ -19,7 +19,7 @@ This is achieved with static helper functions in the main Thaler class name `$`
 
 Following is Thaler by example:
 
-##Hello World
+## Hello World
 ```
 import thaler.*;
 import static thaler.$.*;
