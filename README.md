@@ -160,7 +160,12 @@ That's all folks! For now...
 
 ##PS 
 
-None of this is a joke, if you don't believe you can compile and run the code with the `run.sh` script.
+None of this is a joke, just look at the demonstration 'Main' class :
+
+https://github.com/nyholku/thaler/blob/main/src/Main.java
+
+If you don't believe it you can compile and run the code with the 
+[`run.sh`](https://github.com/nyholku/thaler/blob/main/run.sh) script.
 
 
 
