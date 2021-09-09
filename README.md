@@ -10,11 +10,10 @@ To gain access to all the hippy and trendy stuff in Thaler all you need to do is
 import thaler.*;
 import static thaler.$.*;
 ```
-In thaler $ is pushed to boldly go to places where no dollar sign has been before.
+In thaler '$' is pushed to boldly go to places where no dollar sign has been before.
 
-The main usage for $ is to instantiate objects, but there are other uses:
+The main usage for $ is to instantiate objects, but there are other uses.
 
-Instead of `new List()` you can write just `List$()`.
 
 This is achieved with static helper functions in the main Thaler class name `$`
 
@@ -35,12 +34,18 @@ which uses reflection to instantiate Main class and thus execution of the initia
 
 Not really worth it but people always say Java Hello World is so verbose...
 
-Now that you know that `Name$` stands for instantiation following pieces are
-pretty simple to comprehend, `Range` and `List` class both implement `Iterable<T>`
-and `var` allows type inference to capture the actual Range/List type so that
+## `$` is the sign of the times 
+
+With Thaler instead of `new List()` you can write just `List$()`.
+
+Now that you know that `Name$` stands for instantiation of class `Name` it is pretty simple
+to comprehend the following code.
+`Range` and `List` are classes that  both implement `Iterable<T>`.
+`var` allows type inference to capture the actual Range/List type so that
 we do not need to do casts here in order to use the specific class (Integer)
 methods.
 
+## Python like lists and ranges
 ```
 // Python like range
 for (var i : Range$(3)) {
@@ -62,7 +67,9 @@ for (var i : List$(Range$(1, 2, 3))) {
 	}
 ```
 
-String manipulation using slices is so cool in Python so Thaler attemps to offer that too
+## Python like String manipulation with slices
+
+String manipulation using slices is so cool in Python that Thaler attemps to offer that too:
 
 ```
 // Python style slice
@@ -83,6 +90,7 @@ var list3 = asList("abcdefghi");
 println(asString(del(list3, Slice$(1, null, 2))));
 ```
 
+## Generators can 'go' to places (pun intended)
 
 
 Generator are also so modern and in good taste so I wanted to offer them on the menu:
@@ -100,7 +108,7 @@ for (var i : g) {
 	}
 ```
 
-Above works but unfortunatel following leaks resourses:
+Above works but unfortunately following leaks resourses:
 
 ```
 for (var i : g) {
@@ -112,7 +120,7 @@ for (var i : g) {
 ```
 
 If you break out of the iterator loop you need to use the
-resource initialisation is acquistion pattern that builds
+'resource initialisation is acquistion' pattern that builds
 on `AutoClosable`.
 
 ```
@@ -125,8 +133,10 @@ try (var $=$(g)) {
 		}
 ```
 Here `$` is nothing but a local variable that catches the auto closable
-wrapper created by the `$()` function which wrapper implements Iterables
+wrapper created by the `$()` function which wrapper implements Iterable
 and thus makes the for loop  and type inference work.
+
+## JSON is so the back bone of all things web nowdays
 
 Since everyone likes JSON I felt I could not leave that out
 
@@ -135,16 +145,17 @@ Since everyone likes JSON I felt I could not leave that out
 Dict d = Dict$("{ 'number' : 123 , 'array' : [1 , 2 , 3] , 'string' : 'abcdef' , 'subobj' : {'field':'value'}}");
 // Output as JSON
 println(d);
-
+// output some JSON fields
 println(d.get("array"));
 println(d.get("subobj"));
 ```
 As nobody wants to use a backslash to quote every double quote the JSON parser accepts single quote in addition to double quote
-which makes the JSON literas in your code so much more readable and is fully compatible with JSON spec.
+which makes the JSON literals in your code so much more readable and is fully compatible with JSON spec.
 
 A `Dict` object of course works like an ordered dictionary where access to keys and values is provided by `put()` and `get()`.
 I managed to resist pushing the use of $() for the `get()` methods which I thinks shows my moral character.
 
+## That's all (for now)
 That's all folks! For now...
 
 PS None of this is a joke, you can compile and run the code with the `run.sh` script.
