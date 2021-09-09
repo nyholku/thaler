@@ -107,4 +107,20 @@ public class List<T> extends Struct<T> implements Iterable<T> {
 		return list;
 	}
 
+	public List slice(Integer start) {
+		return slice(start,null,null);
+	}
+
+	public List slice(Integer start,Integer stop) {
+		return slice(start,stop,null);
+	}
+
+	public List slice(Integer start,Integer stop,Integer step) {
+		var slice=Slice$(start,stop,step);
+		List list = List$();
+		for (var i : new IterableSlice(m_List.size(), slice))
+			list.append(m_List.get(i));
+		return list;
+	}
+
 }
