@@ -81,7 +81,8 @@ for (var i : l.slice(Slice$(3)))
 
 ```
 // Three last elements of list as a slice and then turned into Java String
-println(asString(l.slice(Slice$(-3))));
+// Using Python like start:: notation
+println(asString(l.slice(-3,null,null)));
 ```
 We can also use slices to delete characters in a string:
 
